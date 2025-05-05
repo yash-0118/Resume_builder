@@ -6,28 +6,29 @@ import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Dashboard from './pages/Home/Dashboard';
 import EditResume from './pages/ResumeUpdate/EditResume';
+import UserProvider from './context/userContext';
 
 const App = () => {
   return (
-    <>
-    <div>
-      <Router>
-        <Routes>
-          <Route path='/' element={<LandingPage/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
-          <Route path='/resume/:resumeId' element={<EditResume/>}/>
-        </Routes>
-      </Router>
-    </div>
+    <UserProvider>
+      <div>
+        <Router>
+          <Routes>
+            <Route path='/' element={<LandingPage/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path='/resume/:resumeId' element={<EditResume/>}/>
+          </Routes>
+        </Router>
+      </div>
 
-    <Toaster
-      toastOptions= {{
-        className: "",
-        style: {
-          fontSize: "13px",
-        }
-      }}/>
-    </>
+      <Toaster
+        toastOptions= {{
+          className: "",
+          style: {
+            fontSize: "13px",
+          }
+        }}/>
+    </UserProvider>
 
   )
 }
